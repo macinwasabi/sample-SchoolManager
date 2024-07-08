@@ -1,0 +1,35 @@
+<!DOCTYPE generatorConfiguration PUBLIC
+  "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="sample" targetRuntime="MyBatis3">
+    <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin"/>
+    <plugin type="org.mybatis.generator.plugins.MapperAnnotationPlugin"/>
+
+    <jdbcConnection driverClass="org.mariadb.jdbc.Driver"
+      connectionURL="jdbc:mariadb://localhost:3306/sample"
+      userId="system" password="system"/>
+
+    <javaModelGenerator targetPackage="sample.entity.gen" targetProject="src/main/java"/>
+
+    <sqlMapGenerator targetPackage="mapper.gen" targetProject="src/main/resources"/>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="sample.mapper.gen"
+      targetProject="src/main/java"/>
+
+    <!-- 自動生成するテーブルを指定 -->
+    <table tableName="class_info">
+    </table>
+    <table tableName="teacher">
+      <!-- 自動生成されるキーを指定することで、xmlのinsert内にselectKeyを生成する。
+      identityをtrueにすることで、insertの前にselectKeyが実行される。
+      https://mybatis.org/generator/configreference/generatedKey.html -->
+      <generatedKey column="teacher_id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="student">
+      <generatedKey column="student_id" sqlStatement="MySql" identity="true"/>
+    </table>
+    <table tableName="subject"/>
+    <table tableName="record"/>
+  </context>
+</generatorConfiguration>
