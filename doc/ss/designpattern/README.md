@@ -2,7 +2,7 @@
 
 デザインパターンを実装してみるパッケージです。
 
-実装内容の概要を記載します。
+実装内容の概要を記載します。クラス図で出てくるMainは実際に利用するクラスです。また、designpatternパッケージ内でしか利用しない想定で適当に名前をつけています。
 
 - [designpattern](#designpattern)
   - [Iterator](#iterator)
@@ -39,6 +39,8 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
       Iterator <|.. ClassIterator
       Iterator <-- Iterable
       ClassIterator o-- IterableClassDto
+      ClassIterator <-- IterableClassDto
+      IterableClassDto <-- Main
       class Iterator{
           + boolean hasNext()
           + E next()
@@ -68,14 +70,61 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
 
 - 疑問
 
-  - 単に処理をまとめたいだけならLogicとしてまとめるのと同じでは？：
+  - 単に処理をまとめたいだけならLogicとしてまとめてDIするのと同じでは？：それがインスタンスによるパターンそのものだと思う。
 
 - 実装概要
+
+  既存クラス役として姓名の文字列を受け取って生徒(先生)情報DTOを返すクラスがある。これをAdapterで利用する。
 
 ### 継承によるパターン
 
 - 実装の各オブジェクトの説明
 
+  - StudentLogic：生徒情報に関するロジックのインターフェース。
+  - StudentLogicImpl：生徒情報に関するロジックのクラス。StudentConverterを拡張して利用する。大して思いつかなかったので雑です。
+  - StudentConverter：文字列から生徒情報DTOを返すクラス。
+
+- クラス図
+
+  ```mermaid
+    classDiagram
+      StudentLogic <-- Main
+      StudentLogic <|.. StudentLogicImpl
+      StudentConverter <|-- StudentLogicImpl
+      class StudentLogic{
+        + StudentDto getStudent(String)
+      }
+      class StudentLogicImpl{
+        + StudentDto getStudent(String)
+      }
+      class StudentConverter{
+        + StudentDto convertSeiMei(String)
+      }
+  ```
+
 ### インスタンスによるパターン
 
 - 実装の各オブジェクトの説明
+
+  - TeacherLogic：先生情報に関するロジックの抽象クラス。
+  - TeacherLogicImpl：Teacherせんs情報に関するロジックのクラス。TeacherConverterを利用する。大して思いつかなかったので雑です。
+  - TeacherConverter：文字列から先生情報DTOを返すクラス。
+
+- クラス図
+
+  ```mermaid
+    classDiagram
+      TeacherLogic <-- Main
+      TeacherLogic <|-- TeacherLogicImpl
+      TeacherConverter --o TeacherLogicImpl
+      class TeacherLogic{
+        + TeacherDto getTeacher(String)
+      }
+      class TeacherLogicImpl{
+        - TeacherConverter converter
+        + TeacherDto getTeacher(String)
+      }
+      class TeacherConverter{
+        + TeacherDto convertSeiMei(String)
+      }
+  ```

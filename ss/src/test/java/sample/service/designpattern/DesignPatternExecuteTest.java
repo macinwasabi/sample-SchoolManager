@@ -1,10 +1,19 @@
 package sample.service.designpattern;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
+
 import java.util.Iterator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import sample.dto.StudentDto;
+import sample.dto.TeacherDto;
+import sample.entity.gen.Teacher;
+import sample.logic.designpattern.adapter.extend.StudentLogic;
+import sample.logic.designpattern.adapter.extend.StudentLogicImpl;
+import sample.logic.designpattern.adapter.instance.TeacherLogic;
+import sample.logic.designpattern.adapter.instance.TeacherLogicImpl;
 import sample.logic.designpattern.iterator.IterableClassDto;
 
 /**
@@ -26,7 +35,7 @@ public class DesignPatternExecuteTest {
     Iterator<StudentDto> iterator = classDto.iterator();
     while (iterator.hasNext()) {
       StudentDto student = iterator.next();
-      System.out.println(student);
+      System.out.println(student); // 適当なチェック
     }
     System.out.println();
 
@@ -34,5 +43,24 @@ public class DesignPatternExecuteTest {
     for (StudentDto student : classDto) {
       System.out.println(student);
     }
+  }
+
+  /**
+   * 生徒情報を登録するシナリオ。登録時の姓名の区切りが全角or半角スペースのものを分けて生徒情報DTOに格納して返される。
+   */
+  @Test
+  @DisplayName("adapter 実行")
+  public void adapterExecute() {
+    // 継承によるパターン
+    StudentLogic studentLogic = new StudentLogicImpl();
+    StudentDto student = studentLogic.getStudent("テスト 太郎");
+    assertThat(student.getFamilyName(), is("テスト"));
+    assertThat(student.getFirstName(), is("太郎"));
+
+    // インスタンスによるパターン
+    TeacherLogic teacherLogic = new TeacherLogicImpl();
+    TeacherDto teacher = teacherLogic.getTeacher("テスト　花子");
+    assertThat(teacher.getFamilyName(), is("テスト"));
+    assertThat(teacher.getFirstName(), is("花子"));
   }
 }
