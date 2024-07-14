@@ -15,6 +15,8 @@ import sample.logic.designpattern.adapter.extend.StudentLogicImpl;
 import sample.logic.designpattern.adapter.instance.TeacherLogic;
 import sample.logic.designpattern.adapter.instance.TeacherLogicImpl;
 import sample.logic.designpattern.iterator.IterableClassDto;
+import sample.logic.designpattern.templatemethod.AbstractClassIntroduciton;
+import sample.logic.designpattern.templatemethod.ClassIntroduction;
 
 /**
  * デザインパターンの実装を実行してみるクラス。テストとは違うがここに置いています。
@@ -62,5 +64,16 @@ public class DesignPatternExecuteTest {
     TeacherDto teacher = teacherLogic.getTeacher("テスト　花子");
     assertThat(teacher.getFamilyName(), is("テスト"));
     assertThat(teacher.getFirstName(), is("花子"));
+  }
+
+  /**
+   * クラス紹介文を生成するシナリオ。
+   */
+  @Test
+  @DisplayName("templatemethod 実行")
+  public void templatemethodExecute() {
+    AbstractClassIntroduciton introduciton = new ClassIntroduction(
+        "1年A組です。", "仲のいいクラスです。");
+    assertThat(introduciton.get(), is("1年A組です。¥n仲のいいクラスです。¥n"));
   }
 }

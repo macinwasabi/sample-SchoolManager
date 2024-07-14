@@ -9,6 +9,7 @@
   - [Adapter](#adapter)
     - [継承によるパターン](#継承によるパターン)
     - [インスタンスによるパターン](#インスタンスによるパターン)
+  - [TemplateMethod](#templatemethod)
   - [テンプレ](#テンプレ)
 
 ## Iterator
@@ -108,7 +109,7 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
 - 実装の各オブジェクトの説明
 
   - TeacherLogic：先生情報に関するロジックの抽象クラス。
-  - TeacherLogicImpl：Teacherせんs情報に関するロジックのクラス。TeacherConverterを利用する。大して思いつかなかったので雑です。
+  - TeacherLogicImpl：Teacher先生情報に関するロジックのクラス。TeacherConverterを利用する。大して思いつかなかったので雑です。
   - TeacherConverter：文字列から先生情報DTOを返すクラス。
 
 - クラス図
@@ -130,6 +131,39 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
       }
   ```
 
+## TemplateMethod
+
+- メリット
+
+ロジックを共通化し、個別に必要なロジックだけをサブクラスで実装すればよくなる。
+
+- 実装概要
+
+  クラスの紹介文を生成する処理です。
+
+- 実装の各オブジェクトの説明
+
+  - AbstractClassIntroduciton：クラス紹介の抽象クラス。
+  - ClassIntroduction：クラス紹介を実装しているクラス。AbstractClassIntroducitonを継承する。実装では1年A組を想定している。
+
+- クラス図
+
+  ```mermaid
+    classDiagram
+      AbstractClassIntroduciton <-- Main
+      ClassIntroduction <-- Main
+      AbstractClassIntroduciton <|-- ClassIntroduction
+      class AbstractClassIntroduciton{
+        + String get()
+        # String precontent()
+        # String content()
+      }
+      class ClassIntroduction{
+        # String precontent()
+        # String content()
+      }
+  ```
+
 ## テンプレ
 
 - メリット
@@ -138,6 +172,6 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
 
 - 実装概要
 
-- 装の各オブジェクトの説明
+- 実装の各オブジェクトの説明
 
 - クラス図
