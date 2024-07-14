@@ -9,6 +9,7 @@
   - [Adapter](#adapter)
     - [継承によるパターン](#継承によるパターン)
     - [インスタンスによるパターン](#インスタンスによるパターン)
+  - [テンプレ](#テンプレ)
 
 ## Iterator
 
@@ -128,3 +129,15 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
         + TeacherDto convertSeiMei(String)
       }
   ```
+
+## テンプレ
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 装の各オブジェクトの説明
+
+- クラス図
