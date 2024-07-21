@@ -10,7 +10,26 @@
     - [継承によるパターン](#継承によるパターン)
     - [インスタンスによるパターン](#インスタンスによるパターン)
   - [TemplateMethod](#templatemethod)
-  - [テンプレ](#テンプレ)
+  - [FactoryMethod](#factorymethod)
+  - [Singleton](#singleton)
+  - [Prototype](#prototype)
+  - [Builder](#builder)
+  - [AbstractFactory](#abstractfactory)
+  - [Bridge](#bridge)
+  - [Strategy](#strategy)
+  - [Composite](#composite)
+  - [Decorator](#decorator)
+  - [Visitor](#visitor)
+  - [Chain of Responsibility](#chain-of-responsibility)
+  - [Facade](#facade)
+  - [Mediator](#mediator)
+  - [Observer](#observer)
+  - [Memento](#memento)
+  - [State](#state)
+  - [Flyweight](#flyweight)
+  - [Proxy](#proxy)
+  - [Command](#command)
+  - [Interpreter](#interpreter)
 
 ## Iterator
 
@@ -164,7 +183,237 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
       }
   ```
 
-## テンプレ
+## FactoryMethod
+
+- メリット
+
+  - 本来はnewで行うインスタンス生成を、インスタンス生成のためのメソッドに置き換えることで、具体的なクラス名
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Singleton
+
+- メリット
+
+  - インスタンスが1つしか生成されないようにできる。
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Prototype
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Builder
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## AbstractFactory
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Bridge
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Strategy
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Composite
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Decorator
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Visitor
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Chain of Responsibility
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Facade
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Mediator
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Observer
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Memento
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## State
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Flyweight
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Proxy
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Command
+
+- メリット
+
+- 疑問
+
+- 実装概要
+
+- 実装の各オブジェクトの説明
+
+- クラス図
+
+## Interpreter
 
 - メリット
 
