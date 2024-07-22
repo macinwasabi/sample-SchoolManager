@@ -187,27 +187,71 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
 
 - メリット
 
+  - TempateMethodのインスタンス生成版、応用。Creater.create()とConcreteCreater.create()がTemplateMethodになっている。
   - 本来はnewで行うインスタンス生成を、インスタンス生成のためのメソッドに置き換えることで、具体的なクラス名
 
 - 疑問
+
+  - インスタンス生成をメソッドに置き換えたいだけなら、インターフェースを介さないでよいと思う：Product, Creatorのframework側と実装をする側で完全に分かれているため、別のインスタンスを作成するのにframework側はそのまま使える。依存を減らしたこの形も含めてのFactoryMethodだと思う。
 
 - 実装概要
 
 - 実装の各オブジェクトの説明
 
+  - Product：生成されるインスタンスの抽象クラス。
+  - Creator：Productを生成する抽象クラス。
+  - ConcreteProduct：Productの具象クラス。
+  - ConcreteCreator：Creatorの具象クラス。
+
 - クラス図
+
+  ```mermaid
+    classDiagram
+      Product <|-- Creator
+      Creator <|.. ConcreteCreator
+      Product <|.. ConcreteProduct
+      ConcreteProduct <|-- ConcreteCreator
+      class Product {
+        + method1()
+        + method2()
+      }
+      class Creator {
+        + Product create()
+        # Product factoryMethod()
+      }
+      class ConcreteProduct {
+        + method1()
+        + method2()
+      }
+      class ConcreteCreator {
+        # Product factoryMethod()
+      }
+  ```
 
 ## Singleton
 
 - メリット
 
   - インスタンスが1つしか生成されないようにできる。
+  - 扱う側で気をつけて設計を行えばインスタンスが1つしかないようにできるが、その保証がない。Singletonなら保証されている。
+  - enumで実現することもできる。
 
 - 実装概要
 
 - 実装の各オブジェクトの説明
 
+- Singleton：コンストラクタ、フィールド(インスタンス)をprivateとし、getInstance()からインスタンスを生成、返すようにする。
+
 - クラス図
+
+  ```mermaid
+    classDiagram
+      class Singleton {
+        - singleton
+        - Singleton()
+        + getInstance()
+      }
+  ```
 
 ## Prototype
 
