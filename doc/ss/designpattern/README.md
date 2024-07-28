@@ -257,25 +257,75 @@ java.lang.Iterator、java.lang.Iterableを利用する。そのため、パタ�
 
 - メリット
 
-- 疑問
+  - Prototypeやそれを利用するClientでは、ConcretePrototypeに依存することなくインスタンスのコピーを作れる(Clientの中でPrototype型で扱う)。つまり、ClientやConcretePrototypeと、実際の実装(ConcretePrototype)や実行する処理(Clientを使うクラス)とを切り分けることができる。
+  - newせずに、インスタンスをコピーできる。
 
 - 実装概要
 
 - 実装の各オブジェクトの説明
 
+  - Prototype：インスタンスをコピーするメソッドを定めるインターフェース。
+  - ConcretePrototype：Prototypeを実装する。
+  - Client：インスタンスをコピーするメソッドを利用して新しいインスタンスを作る。
+
 - クラス図
+
+  ```mermaid
+    classDiagram
+      Prototype <|-- ConcretePrototype
+      Prototype <|-- Client
+      class Prototype {
+        + createCopy()
+      }
+      class ConcretePrototype {
+        + createCopy()
+      }
+      class Client {
+      }
+  ```
 
 ## Builder
 
 - メリット
 
-- 疑問
+  - 複雑な構造のオブジェクトの作成を簡単に行うことができる。
 
 - 実装概要
 
 - 実装の各オブジェクトの説明
 
+  - Director：Builderを使ってインスタンスを生成する。
+  - Builder：インスタンスを生成するためのインターフェース。インスタンスの各部分を作るためのメソッドを用意する。
+  - ConcreteBuilder：Builderの実装。インスタンス生成で呼び出されるメソッドや、最終的に出来たインスタンスを得るメソッドがある。
+  - Main：Builderパターンを利用する。
+
 - クラス図
+
+  ```mermaid
+    classDiagram
+      Director o-- Builder
+      Builder <|-- ConcreteBuilder
+      Director <|-- Main
+      ConcreteBuilder <|-- Main
+      class Director {
+        - Builder
+        + construct()
+      }
+      class Builder {
+        + buuldPart1()
+        + buuldPart2()
+        + buuldPart3()
+        + getResult()
+      }
+      class ConcreteBuilder {
+        + buuldPart1()
+        + buuldPart2()
+        + buuldPart3()
+        + getResult()
+      }
+      class Main {
+      }
+  ```
 
 ## AbstractFactory
 
